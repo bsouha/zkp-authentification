@@ -78,8 +78,7 @@ template Auth() {
     component ageCheck = LessThan(32);
     ageCheck.in[0] <== requiredMinAge - 1;
     ageCheck.in[1] <== age;
-    isAdultPatient <== isPatient * ageCheck.out;
-
+    isAdultPatient <== isPatient * (1 - ageCheck.out);
     // Expert request verification
     component checkSpecialty = RoleEquality();
     checkSpecialty.in[0] <== expertSpecialty;
